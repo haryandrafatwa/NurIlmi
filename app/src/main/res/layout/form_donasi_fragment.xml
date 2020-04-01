@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_form_donasi"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp">
+
+                <ImageButton
+                    android:id="@+id/ib_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_chevron_left"
+                    android:backgroundTint="@android:color/white"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Form Berdonasi"
+                    android:layout_centerInParent="true"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textSize="20sp"
+                    android:textAllCaps="true"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_form_donasi"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/form_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Donasi hewan kurban untuk yayasan pesantren Darusallam"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/nunito_bold"/>
+
+            <TextView
+                android:id="@+id/form_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senangnya bisa berdonasi"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/nunito_light"
+                android:layout_below="@id/form_title"
+                android:layout_marginTop="8dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/form_subtitle"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/nama_lengkap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Lengkap"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/nunito_bold"
+                    android:layout_marginTop="8dp"/>
+
+                <EditText
+                    android:id="@+id/et_nama_lengkap_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nama_lengkap"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_et_solid_dark_grey"
+                    android:inputType="text"
+                    android:hint="Masukkan nama lengkap kamu"
+                    android:textColorHint="#CBCBCB"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:paddingVertical="12dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"/>
+
+                <TextView
+                    android:id="@+id/alamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/nunito_bold"
+                    android:layout_below="@+id/et_nama_lengkap_form"
+                    android:layout_marginTop="16dp"/>
+
+                <EditText
+                    android:id="@+id/et_alamat_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/alamat"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_et_solid_dark_grey"
+                    android:hint="Masukkan alamat kamu"
+                    android:gravity="start"
+                    android:textColorHint="#CBCBCB"
+                    android:inputType="textMultiLine"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:paddingVertical="12dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"/>
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/nunito_bold"
+                    android:layout_below="@+id/et_alamat_form"
+                    android:layout_marginTop="16dp"/>
+
+                <EditText
+                    android:id="@+id/et_email_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/email"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_et_solid_dark_grey"
+                    android:hint="Masukkan email kamu"
+                    android:gravity="start"
+                    android:textColorHint="#CBCBCB"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:paddingVertical="12dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"/>
+
+                <TextView
+                    android:id="@+id/phoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No. Handphone"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/nunito_bold"
+                    android:layout_below="@+id/et_email_form"
+                    android:layout_marginTop="16dp"/>
+
+                <EditText
+                    android:id="@+id/et_phoneNumber_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/phoneNumber"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_et_solid_dark_grey"
+                    android:hint="Masukkan nomor handphone kamu"
+                    android:gravity="start"
+                    android:textColorHint="#CBCBCB"
+                    android:inputType="phone"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:paddingVertical="12dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"/>
+
+                <Button
+                    android:id="@+id/btn_metode_pembayaran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_btn_solid_blue"
+                    android:layout_below="@+id/et_phoneNumber_form"
+                    android:text="Metode Pembayaran"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:elevation="10dp"
+                    android:textSize="20sp"
+                    android:layout_marginTop="16dp"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

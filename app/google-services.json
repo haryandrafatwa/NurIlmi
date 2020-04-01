@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "220714174877",
+    "firebase_url": "https://nur-ilmi.firebaseio.com",
+    "project_id": "nur-ilmi",
+    "storage_bucket": "nur-ilmi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220714174877:android:c1b61ab0e3cbb591c2c774",
+        "android_client_info": {
+          "package_name": "com.example.nurilmi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220714174877-ivlsj5c2qgjdd9c0quaep3k2c676f5u1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nurilmi",
+            "certificate_hash": "1cd1cd534a3902988e968b7f5f0ac35878da3e32"
+          }
+        },
+        {
+          "client_id": "220714174877-s7jj3m70s34jkq4r4dfs5noik3o9bb4p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNRQLBMCNwr5L-dnkBZP-bVPiXLMMG-fU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220714174877-s7jj3m70s34jkq4r4dfs5noik3o9bb4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

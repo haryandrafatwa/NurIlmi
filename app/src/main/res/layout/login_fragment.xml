@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar_login"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="@color/colorPrimary"
+    android:theme="@style/ToolbarTheme">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:fontFamily="@font/nunito_semibold"/>
+
+</androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/iv_ilustration_1"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ilustration_1"/>
+
+        <EditText
+            android:id="@+id/et_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:background="@drawable/bg_et_solid_white_transp"
+            android:paddingVertical="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="32dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/nunito_regular"
+            android:layout_below="@id/iv_ilustration_1"/>
+
+        <EditText
+            android:id="@+id/et_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_email_login"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:background="@drawable/bg_et_solid_white_transp"
+            android:paddingVertical="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="32dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito_regular"/>
+
+        <Button
+            android:id="@+id/btn_masuk_login"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="masuk"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="18sp"
+            android:background="@drawable/bg_btn_solid_white"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="32dp"
+            android:layout_below="@id/et_password_login"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

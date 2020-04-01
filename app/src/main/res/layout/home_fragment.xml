@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_home"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:layout_centerInParent="true"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textSize="20sp"
+                    android:textAllCaps="true"/>
+
+                <ImageButton
+                    android:id="@+id/ib_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_profile"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/donasiyuk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donasi Yuk!"
+            android:textColor="@color/colorPrimary"
+            android:textSize="28sp"
+            android:fontFamily="@font/nunito_semibold"
+            android:layout_marginLeft="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/toolbar_home"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/donasiyuk"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp">
+
+            <RelativeLayout
+                android:id="@+id/layout_donasi_kurban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/bg_btn_solid_white"
+                android:padding="16dp"
+                android:elevation="1dp">
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_kurban"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="Donasi hewan kurban untuk yayasan pesantren Darusallam"
+                    android:inputType="textMultiLine"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/iv_sapi_vector"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/sapi_vector"
+                    android:layout_below="@+id/tv_deskripsi_kurban"
+                    android:layout_marginTop="8dp"/>
+
+                <Button
+                    android:id="@+id/btn_donasi_kurban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_btn_solid_blue"
+                    android:layout_toRightOf="@id/iv_sapi_vector"
+                    android:layout_alignBottom="@id/iv_sapi_vector"
+                    android:layout_marginLeft="8dp"
+                    android:text="Donasi Sekarang"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:elevation="6dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_donasi_yapit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_below="@id/layout_donasi_kurban"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_btn_solid_white"
+                android:padding="16dp"
+                android:elevation="1dp">
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_yapit"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Donasi untuk anak yatim piatu "
+                    android:inputType="textMultiLine"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/iv_yapit_vector"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/yapit_vector"
+                    android:layout_below="@+id/tv_deskripsi_yapit"
+                    android:layout_marginTop="8dp"/>
+
+                <Button
+                    android:id="@+id/btn_donasi_yapit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_btn_solid_blue"
+                    android:layout_toRightOf="@id/iv_yapit_vector"
+                    android:layout_alignBottom="@id/iv_yapit_vector"
+                    android:layout_marginLeft="8dp"
+                    android:text="Donasi Sekarang"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:elevation="10dp"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

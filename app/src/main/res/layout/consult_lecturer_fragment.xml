@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_consult"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@android:color/white"
+            android:elevation="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp">
+
+                <ImageButton
+                    android:id="@+id/ib_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_chevron_left"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Private"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textSize="20sp"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_consult"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/hari"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kamis"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17 Agustus 2017"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/nunito_regular"
+                android:layout_below="@id/hari"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/pelajaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pelajaran"
+                android:textSize="18sp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="@android:color/black"
+                android:layout_below="@id/tanggal"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/nama_pelajaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ilmu Tajwid"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/nunito_regular"
+                android:layout_below="@id/pelajaran"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/guru_pilih"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih guru yang tersedia:"
+                android:textSize="18sp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="@android:color/black"
+                android:layout_below="@id/nama_pelajaran"
+                android:layout_marginTop="16dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/guru_pilih"
+                android:background="@drawable/bg_btn_solid_white"
+                android:layout_marginTop="8dp"
+                android:padding="16dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_guru"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    tools:listitem="@layout/book_item"
+                    tools:itemCount="2"/>
+
+                <ProgressBar
+                    android:id="@+id/pb_guru"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:id="@+id/tv_guru_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ups, guru untuk pelajaran ini belum tersedia"
+                    android:textSize="14sp"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@android:color/black"
+                    android:visibility="invisible"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

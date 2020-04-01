@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_consult"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Private"
+                    android:layout_centerInParent="true"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textSize="20sp"/>
+
+                <ImageButton
+                    android:id="@+id/ib_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_profile"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:id="@+id/book_illustration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_consult"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="250dp"
+                android:background="@drawable/ic_private_illustration"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/book_illustration"
+            android:background="@drawable/bg_solid_default_top_radius"
+            android:layout_marginTop="-24dp"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:id="@+id/layout_rv_buku"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buku"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:background="@drawable/bg_btn_solid_white">
+
+                <TextView
+                    android:id="@+id/tv_hai_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="@android:color/black"/>
+
+                <Button
+                    android:id="@+id/btn_pilih_tanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_btn_solid_blue"
+                    android:layout_below="@+id/tv_hai_user"
+                    android:padding="16dp"
+                    android:gravity="start|center_vertical"
+                    android:text="Pilih tanggal kamu"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:drawableEnd="@drawable/ic_chevron_right"
+                    android:drawableTint="@android:color/white"
+                    android:elevation="6dp"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suasana les privat akan membuat kamu lebih mudah mengontrol perkembangan belajar mu. Kamu juga bisa mengatur waktu belajar secara fleksibel, sesuai dengan kebutuhan dan kesepakatan bersama"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@id/btn_pilih_tanggal"
+                    android:layout_marginTop="16dp"
+                    android:justificationMode="inter_word"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

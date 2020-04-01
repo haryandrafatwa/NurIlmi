@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@drawable/bg_btn_solid_white"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/done_illustration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/done_illustration"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="KAMU AKAN DI HUBUNGI OLEH GURUMU!"
+        android:layout_below="@+id/done_illustration"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_semibold"
+        android:textColor="@android:color/black"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

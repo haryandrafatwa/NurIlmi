@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/home_selector"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/consult"
+        android:enabled="true"
+        android:icon="@drawable/consult_selector"
+        android:title="Consult"/>
+
+    <item
+        android:id="@+id/book"
+        android:enabled="true"
+        android:icon="@drawable/book_selector"
+        android:title="Book"/>
+</menu>
