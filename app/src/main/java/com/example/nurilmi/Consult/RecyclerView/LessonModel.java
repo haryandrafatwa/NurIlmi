@@ -1,4 +1,4 @@
-package com.example.nurilmi;
+package com.example.nurilmi.Consult.RecyclerView;
 
 public class LessonModel {
 

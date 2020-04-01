@@ -1,4 +1,4 @@
-package com.example.nurilmi;
+package com.example.nurilmi.Consult;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -19,6 +19,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nurilmi.Consult.RecyclerView.LessonAdapter;
+import com.example.nurilmi.Consult.RecyclerView.LessonModel;
+import com.example.nurilmi.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,12 +32,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
 
 import static android.view.View.GONE;
 
-public class ChooseLecturerPrivateFragment extends Fragment {
+public class ChooseLessonPrivateFragment extends Fragment {
 
     private RecyclerViewReadyCallback recyclerViewReadyCallback;
 
@@ -44,18 +46,20 @@ public class ChooseLecturerPrivateFragment extends Fragment {
 
     private BottomNavigationView bottomNavigationView;
 
+    private Button btn_pilih_tgl;
     private ProgressBar progressBar;
-    private TextView tv_empty,tv_hari,tv_tanggal,tv_nama;
+    private TextView tv_empty;
     private ImageButton ib_back;
 
-    private ArrayList<LecturerModel> mList = new ArrayList<>();
+    private ArrayList<LessonModel> mList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter adapter;
 
     private Calendar mCalendar;
+    private Locale local = new Locale("id", "id");
 
-    private DatabaseReference lecturerRefs;
+    private DatabaseReference lessonRefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +68,7 @@ public class ChooseLecturerPrivateFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.consult_lecturer_fragment, container, false);
+        return inflater.inflate(R.layout.consult_lesson_fragment, container, false);
     }
 
     @Override
@@ -79,27 +83,22 @@ public class ChooseLecturerPrivateFragment extends Fragment {
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
         bottomNavigationView.setVisibility(GONE);
 
+        btn_pilih_tgl = getActivity().findViewById(R.id.btn_pilih_tanggal);
         mCalendar = Calendar.getInstance();
+        mCalendar.set(Calendar.YEAR,Calendar.getInstance(local).get(Calendar.YEAR));
+        mCalendar.set(Calendar.MONTH,Calendar.getInstance(local).get(Calendar.MONTH));
+        mCalendar.set(Calendar.DAY_OF_MONTH,Calendar.getInstance(local).get(Calendar.DAY_OF_MONTH));
 
-        progressBar = getActivity().findViewById(R.id.pb_guru);
-        tv_empty = getActivity().findViewById(R.id.tv_guru_empty);
-        tv_hari = getActivity().findViewById(R.id.hari);
-        tv_tanggal = getActivity().findViewById(R.id.tanggal);
-        tv_nama = getActivity().findViewById(R.id.nama_pelajaran);
+        progressBar = getActivity().findViewById(R.id.pb_lesson);
+        tv_empty = getActivity().findViewById(R.id.tv_lesson_empty);
 
         recyclerViewReadyCallback = new RecyclerViewReadyCallback() {
             @Override
             public void onLayoutReady() { // fungsi untuk mengecheck apakah recyclerview sudah siap untuk tampil semua item
                 progressBar.setVisibility(GONE);
+                recyclerView.setVisibility(View.VISIBLE);
             }
         };
-
-        Bundle bundle = getArguments();
-        final HashMap lessonMap = (HashMap) bundle.getSerializable("lessonMap");
-
-        tv_hari.setText(lessonMap.get("hari").toString());
-        tv_tanggal.setText(lessonMap.get("tanggal").toString());
-        tv_nama.setText(lessonMap.get("nama_lesson").toString());
 
 
         ib_back = getActivity().findViewById(R.id.ib_back);
@@ -113,17 +112,57 @@ public class ChooseLecturerPrivateFragment extends Fragment {
 
         initRecyclerView();
 
-        lecturerRefs = FirebaseDatabase.getInstance().getReference().child("Lesson").child(lessonMap.get("id").toString()).child("Guru");
+        lessonRefs = FirebaseDatabase.getInstance().getReference().child("Lesson");
 
-        lecturerRefs.addValueEventListener(new ValueEventListener() {
+        btn_pilih_tgl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        if(Calendar.getInstance().get(Calendar.YEAR) <= year){
+                            if(Calendar.getInstance().get(Calendar.MONTH) <= month){
+                                if(Calendar.getInstance().get(Calendar.DAY_OF_MONTH) <= dayOfMonth){
+                                    mCalendar.set(Calendar.YEAR,year);
+                                    mCalendar.set(Calendar.MONTH,month);
+                                    mCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                                    progressBar.setVisibility(View.VISIBLE);
+                                    tv_empty.setVisibility(GONE);
+                                    datepickerPop();
+                                }else{
+                                    Toast.makeText(getActivity(), "Silahkan pilih ditanggal yang lain", Toast.LENGTH_SHORT).show();
+                                }
+                            }else{
+                                Toast.makeText(getActivity(), "Silahkan pilih dibulan yang lain", Toast.LENGTH_SHORT).show();
+                            }
+                        }else{
+                            Toast.makeText(getActivity(), "Silahkan pilih ditahun yang lain", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+            }
+        });
+
+
+
+    }
+
+    private void datepickerPop(){
+        String myFormat = "EEEE, dd MMMM yyyy"; //In which you need put here
+        Locale local = new Locale("id", "id");
+
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, local);
+
+        btn_pilih_tgl.setText(sdf.format(mCalendar.getTime()));
+        lessonRefs.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getChildrenCount()!=0){
                     tv_empty.setVisibility(View.INVISIBLE);
                     mList.clear();
                     for (DataSnapshot dats:dataSnapshot.getChildren()){
-                        mList.add(new LecturerModel(dats.getKey(),lessonMap.get("id").toString(),dats.child("nama_lecturer").getValue().toString(),lessonMap.get("tanggal").toString(),dats.child("pendidikan").getValue().toString()
-                        ,dats.child("phoneNumber").getValue().toString(),dats.child("alamat").getValue().toString()));
+                        mList.add(new LessonModel(dats.getKey(),dats.child("nama_lesson").getValue().toString(),btn_pilih_tgl.getText().toString()));
                         adapter.notifyDataSetChanged();
 
                         recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -147,13 +186,12 @@ public class ChooseLecturerPrivateFragment extends Fragment {
 
             }
         });
-
     }
 
     private void initRecyclerView(){ // fungsi buat bikin object list artikel
-        recyclerView = getActivity().findViewById(R.id.rv_guru);
-        adapter = new LecturerAdapter(mList,getActivity().getApplicationContext(),getActivity());
-        mLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,true);
+        recyclerView = getActivity().findViewById(R.id.rv_lesson);
+        adapter = new LessonAdapter(mList,getActivity().getApplicationContext(),getActivity());
+        mLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         ((LinearLayoutManager) mLayoutManager).setStackFromEnd(true);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);

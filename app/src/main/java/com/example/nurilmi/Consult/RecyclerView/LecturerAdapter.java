@@ -1,31 +1,31 @@
-package com.example.nurilmi;
+package com.example.nurilmi.Consult.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nurilmi.Consult.LecturerFragment;
+import com.example.nurilmi.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
+public class LecturerAdapter extends RecyclerView.Adapter<LecturerAdapter.ViewHolder> {
 
-    private List<LessonModel> mList = new ArrayList<>();
+    private List<LecturerModel> mList = new ArrayList<>();
     private Context mContext;
     private FragmentActivity mActivity;
 
-    public LessonAdapter(List<LessonModel> mList, Context mContext, FragmentActivity mActivity) {
+    public LecturerAdapter(List<LecturerModel> mList, Context mContext, FragmentActivity mActivity) {
         this.mList = mList;
         this.mContext = mContext;
         this.mActivity = mActivity;
@@ -43,25 +43,27 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         final int position = i;
-        final LessonModel model = mList.get(i);
+        final LecturerModel model = mList.get(i);
 
         try{
-            viewHolder.tv_nama_lesson.setText(model.getNama_lesson());
+            viewHolder.tv_nama_Lecturer.setText(model.getNama_lecturer());
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String[] splitter = model.getTanggal().split(",\\s");
                     HashMap lessonMap = new HashMap();
-                    lessonMap.put("id",model.getId_lesson());
-                    lessonMap.put("nama_lesson",model.getNama_lesson());
-                    lessonMap.put("tanggal",splitter[1]);
-                    lessonMap.put("hari",splitter[0]);
+                    lessonMap.put("id_lesson",model.getId_lesson());
+                    lessonMap.put("id_lecturer",model.getId_lecturer());
+                    lessonMap.put("nama_lecturer",model.getNama_lecturer());
+                    lessonMap.put("tanggal",model.getTanggal());
+                    lessonMap.put("phoneNumber",model.getPhoneNumber());
+                    lessonMap.put("pendidikan",model.getPendidikan());
+                    lessonMap.put("alamat",model.getAlamat());
 
-                    ChooseLecturerPrivateFragment chooseLecturerPrivateFragment = new ChooseLecturerPrivateFragment();
+                    LecturerFragment lecturerFragment = new LecturerFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("lessonMap",lessonMap);
-                    chooseLecturerPrivateFragment.setArguments(bundle);
-                    setFragment(chooseLecturerPrivateFragment);
+                    lecturerFragment.setArguments(bundle);
+                    setFragment(lecturerFragment);
                 }
             });
         }catch (Throwable throwable){
@@ -83,11 +85,11 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_nama_lesson;
+        TextView tv_nama_Lecturer;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_nama_lesson = (TextView) itemView.findViewById(R.id.book_itemname);
+            tv_nama_Lecturer = (TextView) itemView.findViewById(R.id.book_itemname);
         }
     }
 }
