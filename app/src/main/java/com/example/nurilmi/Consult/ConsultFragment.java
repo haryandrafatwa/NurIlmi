@@ -50,6 +50,8 @@ public class ConsultFragment extends Fragment {
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
+        bottomNavigationView.setVisibility(View.VISIBLE);
+
         btn_pilih_tgl = getActivity().findViewById(R.id.btn_pilih_tanggal);
         tv_hai = getActivity().findViewById(R.id.tv_hai_user);
 
