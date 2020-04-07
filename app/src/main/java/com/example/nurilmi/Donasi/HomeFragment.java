@@ -63,35 +63,51 @@ public class HomeFragment extends Fragment {
         donasiRefs.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child("status").getValue().toString().equals("Pending")){
-                    final KonfirmasiPembayaranFragment konfirmasiPembayaranFragment = new KonfirmasiPembayaranFragment();
-                    btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            setFragment(konfirmasiPembayaranFragment);
-                        }
-                    });
-                    btn_donasi_yapit.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            setFragment(konfirmasiPembayaranFragment);
-                        }
-                    });
+                if(dataSnapshot.getChildrenCount()!=0){
+                    if(dataSnapshot.child("status").getValue().toString().equals("Pending")){
+                        final KonfirmasiPembayaranFragment konfirmasiPembayaranFragment = new KonfirmasiPembayaranFragment();
+                        btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setFragment(konfirmasiPembayaranFragment);
+                            }
+                        });
+                        btn_donasi_yapit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setFragment(konfirmasiPembayaranFragment);
+                            }
+                        });
+                    }else{
+                        btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                FormDonasiFragment formDonasiFragment = new FormDonasiFragment();
+
+                                Bundle bundle = new Bundle();
+                                bundle.putString("title",tv_kurban.getText().toString());
+                                bundle.putString("tipe","Kurban");
+                                formDonasiFragment.setArguments(bundle);
+
+                                setFragment(formDonasiFragment);
+                            }
+                        });
+
+                        btn_donasi_yapit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                FormDonasiFragment formDonasiFragment = new FormDonasiFragment();
+
+                                Bundle bundle = new Bundle();
+                                bundle.putString("title",tv_yapit.getText().toString());
+                                bundle.putString("tipe","Yatim Piatu");
+                                formDonasiFragment.setArguments(bundle);
+
+                                setFragment(formDonasiFragment);
+                            }
+                        });
+                    }
                 }else{
-                    btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            FormDonasiFragment formDonasiFragment = new FormDonasiFragment();
-
-                            Bundle bundle = new Bundle();
-                            bundle.putString("title",tv_kurban.getText().toString());
-                            bundle.putString("tipe","Kurban");
-                            formDonasiFragment.setArguments(bundle);
-
-                            setFragment(formDonasiFragment);
-                        }
-                    });
-
                     btn_donasi_yapit.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
