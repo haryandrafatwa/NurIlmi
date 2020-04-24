@@ -59,25 +59,11 @@ public class KonfirmasiBerhasilFragment extends Fragment {
 
         Bundle bundle = getArguments();
 
-
         textView.setText("Sebesar "+bundle.getString("nominal"));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                donasiRefs.child("list").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                            snapshot.child("status").getRef().setValue("Completed");
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
                 HomeFragment homeFragment = new HomeFragment();
                 setFragment(homeFragment);
             }

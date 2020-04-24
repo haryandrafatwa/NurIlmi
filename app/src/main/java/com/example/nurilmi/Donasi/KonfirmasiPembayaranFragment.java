@@ -37,6 +37,7 @@ public class KonfirmasiPembayaranFragment extends Fragment {
     private BottomNavigationView bottomNavigationView;
 
     private DatabaseReference donasiRefs;
+    private Bundle bundle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class KonfirmasiPembayaranFragment extends Fragment {
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
         bottomNavigationView.setVisibility(View.GONE);
 
+        bundle = getArguments();
         tv_nama = getActivity().findViewById(R.id.tv_nama_lengkap_donasi);
         tv_email = getActivity().findViewById(R.id.tv_email_donasi);
         tv_phonenumber = getActivity().findViewById(R.id.tv_phonenumber_donasi);
@@ -76,12 +78,6 @@ public class KonfirmasiPembayaranFragment extends Fragment {
         donasiRefs.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child("status").getValue().toString().equals("Clear")){
-                    layout_konfirmasi.setVisibility(View.VISIBLE);
-                }else{
-                    layout_konfirmasi.setVisibility(View.GONE);
-                }
-
                 donasiRefs.child("list").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -129,26 +125,18 @@ public class KonfirmasiPembayaranFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
                 bundle.putString("nominal",tv_nominal.getText().toString());
-                KonfirmasiBerhasilFragment konfirmasiBerhasilFragment = new KonfirmasiBerhasilFragment();
-                konfirmasiBerhasilFragment.setArguments(bundle);
-                setFragmentClear(konfirmasiBerhasilFragment);
-                donasiRefs.child("status").setValue("Clear");
+                UploadFragment uploadFragment = new UploadFragment();
+                uploadFragment.setArguments(bundle);
+                setFragmentClear(uploadFragment);
             }
         });
     }
 
     private void setFragmentClear(Fragment fragment) // fungsi buat pindah - pindah fragment
     {
-        FragmentManager fm = getActivity().getSupportFragmentManager();
-        for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
-            fm.popBackStack();
-        }
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-        HomeFragment homeFragment = new HomeFragment();
-        fragmentTransaction.replace(R.id.frameFragment,homeFragment).addToBackStack(null);
-        fragmentTransaction.replace(R.id.frameFragment,fragment);
+        fragmentTransaction.replace(R.id.frameFragment,fragment).addToBackStack(null);
         fragmentTransaction.commit();
     }
 

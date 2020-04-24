@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_form_donasi"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp">
+
+            <ImageButton
+                android:id="@+id/ib_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_chevron_left"
+                android:backgroundTint="@android:color/white"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UPLOAD"
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="20sp"
+                android:textAllCaps="true"/>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_form_donasi"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:id="@+id/layout_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_btn_solid_white_stroke">
+
+            <TextView
+                android:id="@+id/uploadyour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload your confirmation here!"
+                android:textSize="18sp"
+                android:fontFamily="@font/nunito_semibold"
+                android:textColor="@color/colorAccent"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="16dp"/>
+
+            <ImageView
+                android:id="@+id/imageUpload"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_below="@+id/uploadyour"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnBrowse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Browse"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_btn_solid_blue"
+                android:layout_below="@id/imageUpload"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/nunito_semibold"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_btn_solid_blue"
+            android:layout_below="@id/layout_title"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/nunito_semibold"
+            android:layout_marginTop="16dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

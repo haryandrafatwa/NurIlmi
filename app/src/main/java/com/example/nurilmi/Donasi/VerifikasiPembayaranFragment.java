@@ -135,7 +135,6 @@ public class VerifikasiPembayaranFragment extends Fragment {
                 donasiRefs.child("list").getRef().addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        donasiRefs.child("status").setValue("Pending");
                         donasiRefs.child("list").child(""+dataSnapshot.getChildrenCount()).updateChildren(donaturMap);
                     }
 
@@ -146,6 +145,9 @@ public class VerifikasiPembayaranFragment extends Fragment {
                 });
 
                 KonfirmasiPembayaranFragment konfirmasiPembayaranFragment = new KonfirmasiPembayaranFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("id",""+dataSnapshot.getChildrenCount());
+                konfirmasiPembayaranFragment.setArguments(bundle);
                 setFragment(konfirmasiPembayaranFragment);
             }
 

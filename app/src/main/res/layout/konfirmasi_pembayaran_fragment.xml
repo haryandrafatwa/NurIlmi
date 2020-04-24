@@ -222,16 +222,15 @@
                 android:id="@+id/layout_konfirmasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_nomor_rekening"
-                android:visibility="gone">
+                android:layout_below="@+id/tv_nomor_rekening">
 
                 <TextView
                     android:id="@+id/deskrpisi_konfirmasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pembayaran anda telah dikonfirmasi oleh pihak kami"
+                    android:text="Silahkan upload bukti transfer anda dengan menekan tombol berikut"
                     android:fontFamily="@font/nunito_semibold"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:layout_marginTop="16dp"/>
 
                 <Button
@@ -240,7 +239,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_btn_solid_blue"
                     android:layout_below="@+id/deskrpisi_konfirmasi"
-                    android:text="Lanjutkan"
+                    android:text="Upload Bukti Transaksi"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:elevation="10dp"
@@ -303,7 +302,7 @@
                     android:id="@+id/p2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tunggu sesaat sampai pembayaran berhasil dikonfirmasi"
+                    android:text="Silahkan upload bukti transfer anda."
                     android:fontFamily="@font/nunito_semibold"
                     android:layout_below="@id/p1"
                     android:layout_toRightOf="@id/n1"

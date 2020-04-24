@@ -52,12 +52,11 @@
             android:layout_below="@id/iv_ilustration_1"/>
 
         <EditText
-            android:id="@+id/et_password_daftar"
+            android:id="@+id/et_phonenumber_daftar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/et_username_daftar"
-            android:inputType="textPassword"
-            android:hint="Password"
+            android:inputType="phone"
+            android:hint="No. HP"
             android:background="@drawable/bg_et_solid_white_transp"
             android:paddingVertical="10dp"
             android:paddingRight="10dp"
@@ -66,7 +65,8 @@
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/nunito_regular"/>
+            android:fontFamily="@font/nunito_regular"
+            android:layout_below="@id/et_username_daftar"/>
 
         <EditText
             android:id="@+id/et_email_daftar"
@@ -83,14 +83,15 @@
             android:textColorHint="@android:color/white"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_regular"
-            android:layout_below="@id/et_password_daftar"/>
+            android:layout_below="@id/et_phonenumber_daftar"/>
 
         <EditText
-            android:id="@+id/et_phonenumber_daftar"
+            android:id="@+id/et_password_daftar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:hint="No. HP"
+            android:layout_below="@id/et_email_daftar"
+            android:inputType="textPassword"
+            android:hint="Password"
             android:background="@drawable/bg_et_solid_white_transp"
             android:paddingVertical="10dp"
             android:paddingRight="10dp"
@@ -99,8 +100,7 @@
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/nunito_regular"
-            android:layout_below="@id/et_email_daftar"/>
+            android:fontFamily="@font/nunito_regular"/>
 
         <Button
             android:id="@+id/btn_daftar_daftar"
@@ -113,7 +113,7 @@
             android:background="@drawable/bg_btn_solid_white"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="32dp"
-            android:layout_below="@id/et_phonenumber_daftar"/>
+            android:layout_below="@id/et_password_daftar"/>
 
     </RelativeLayout>
 

@@ -59,55 +59,80 @@ public class HomeFragment extends Fragment {
         btn_donasi_kurban = getActivity().findViewById(R.id.btn_donasi_kurban);
         btn_donasi_yapit = getActivity().findViewById(R.id.btn_donasi_yapit);
 
-        donasiRefs = FirebaseDatabase.getInstance().getReference().child("Donasi").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        donasiRefs = FirebaseDatabase.getInstance().getReference().child("Donasi").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("list");
         donasiRefs.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.getChildrenCount()!=0){
-                    if(dataSnapshot.child("status").getValue().toString().equals("Pending")){
-                        final KonfirmasiPembayaranFragment konfirmasiPembayaranFragment = new KonfirmasiPembayaranFragment();
-                        btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                setFragment(konfirmasiPembayaranFragment);
-                            }
-                        });
-                        btn_donasi_yapit.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                setFragment(konfirmasiPembayaranFragment);
-                            }
-                        });
-                    }else{
-                        btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                FormDonasiFragment formDonasiFragment = new FormDonasiFragment();
+                    for (final DataSnapshot snapshot : dataSnapshot.getChildren()){
 
-                                Bundle bundle = new Bundle();
-                                bundle.putString("title",tv_kurban.getText().toString());
-                                bundle.putString("tipe","Kurban");
-                                formDonasiFragment.setArguments(bundle);
+                        if(snapshot.child("status").getValue().toString().equals("Pending")){
+                            final KonfirmasiPembayaranFragment konfirmasiPembayaranFragment = new KonfirmasiPembayaranFragment();
+                            btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("id",snapshot.getKey());
+                                    konfirmasiPembayaranFragment.setArguments(bundle);
+                                    setFragment(konfirmasiPembayaranFragment);
+                                }
+                            });
+                            btn_donasi_yapit.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("id",snapshot.getKey());
+                                    konfirmasiPembayaranFragment.setArguments(bundle);
+                                    setFragment(konfirmasiPembayaranFragment);
+                                }
+                            });
+                        }else{
+                            btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    FormDonasiFragment formDonasiFragment = new FormDonasiFragment();
 
-                                setFragment(formDonasiFragment);
-                            }
-                        });
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("title",tv_kurban.getText().toString());
+                                    bundle.putString("tipe","Kurban");
+                                    formDonasiFragment.setArguments(bundle);
 
-                        btn_donasi_yapit.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                FormDonasiFragment formDonasiFragment = new FormDonasiFragment();
+                                    setFragment(formDonasiFragment);
+                                }
+                            });
 
-                                Bundle bundle = new Bundle();
-                                bundle.putString("title",tv_yapit.getText().toString());
-                                bundle.putString("tipe","Yatim Piatu");
-                                formDonasiFragment.setArguments(bundle);
+                            btn_donasi_yapit.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    FormDonasiFragment formDonasiFragment = new FormDonasiFragment();
 
-                                setFragment(formDonasiFragment);
-                            }
-                        });
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("title",tv_yapit.getText().toString());
+                                    bundle.putString("tipe","Yatim Piatu");
+                                    formDonasiFragment.setArguments(bundle);
+
+                                    setFragment(formDonasiFragment);
+                                }
+                            });
+                        }
+
                     }
                 }else{
+
+                    btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FormDonasiFragment formDonasiFragment = new FormDonasiFragment();
+
+                            Bundle bundle = new Bundle();
+                            bundle.putString("title",tv_kurban.getText().toString());
+                            bundle.putString("tipe","Kurban");
+                            formDonasiFragment.setArguments(bundle);
+
+                            setFragment(formDonasiFragment);
+                        }
+                    });
+
                     btn_donasi_yapit.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
