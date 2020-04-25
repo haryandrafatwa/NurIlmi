@@ -49,6 +49,7 @@ public class HomeFragment extends Fragment {
         initialize();
     }
 
+    //ini adlaah fungsi inisiasi untuk semua objek yang ada pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -63,10 +64,9 @@ public class HomeFragment extends Fragment {
         donasiRefs.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getChildrenCount()!=0){
+                if(dataSnapshot.getChildrenCount()!=0){ //kondisi ketika data pada firebase terisi
                     for (final DataSnapshot snapshot : dataSnapshot.getChildren()){
-
-                        if(snapshot.child("status").getValue().toString().equals("Pending")){
+                        if(snapshot.child("status").getValue().toString().equals("Pending")){ //mengecek apakah masih ada transaksi yang tertunda atau tidak
                             final KonfirmasiPembayaranFragment konfirmasiPembayaranFragment = new KonfirmasiPembayaranFragment();
                             btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
                                     setFragment(konfirmasiPembayaranFragment);
                                 }
                             });
-                        }else{
+                        }else{ //kondisi ketika sudah tidak ada transaksi yang tertunda
                             btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -117,7 +117,7 @@ public class HomeFragment extends Fragment {
                         }
 
                     }
-                }else{
+                }else{ //kondisi ketika data pada firebase kosong
 
                     btn_donasi_kurban.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -163,6 +163,7 @@ public class HomeFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    //inisiasi status bar
     private void setStatusBar(){ // fungsi buat ubah warna status bar
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getActivity().getWindow().clearFlags(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
