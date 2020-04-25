@@ -63,6 +63,7 @@ public class VerifikasiPembayaranFragment extends Fragment {
         initialize();
     }
 
+    //fungsi inisiasi semua objek pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -78,6 +79,7 @@ public class VerifikasiPembayaranFragment extends Fragment {
         ib_back = getActivity().findViewById(R.id.ib_back);
         button = getActivity().findViewById(R.id.btn_verify_pembayaran);
 
+        //ini untuk ketika tombol back di tekan, maka ke halaman sebelumnya
         ib_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +98,9 @@ public class VerifikasiPembayaranFragment extends Fragment {
         tv_phonenumber.setText(donaturMap.get("phoneNumber").toString());
         tv_tipe_donasi.setText(bundle.getString("tipe"));
         tv_nominal.setText(bundle.getString("nominal"));
+
+
+        //Melakukan selection terhadap metode pembayaran, untuk menginisiasi gambar serta deskripsi bank
         if(bundle.getString("metodePembayaran").equals("Mandiri")){
             tv_rekening.setText(MANDIRI);
             imageView.setBackground(getActivity().getDrawable(R.drawable.ic_bank_mandiri));
@@ -108,7 +113,7 @@ public class VerifikasiPembayaranFragment extends Fragment {
         }
 
         Locale local = new Locale("id", "id");
-        String currentDate = new SimpleDateFormat("EEEE dd MMMM yyyy, HH:mm", local).format(new Date());
+        String currentDate = new SimpleDateFormat("EEEE dd MMMM yyyy, HH:mm", local).format(new Date()); //ini untuk mengambil tanggal hari ini, beserta dengan waktu.
         tv_tanggal.setText(currentDate);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +124,7 @@ public class VerifikasiPembayaranFragment extends Fragment {
         });
     }
 
+    //Fungsi untuk menambahkan data hasil form donasi ke firebase
     private void verify(){
 
         donasiRefs = FirebaseDatabase.getInstance().getReference().child("Donasi").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -147,7 +153,7 @@ public class VerifikasiPembayaranFragment extends Fragment {
                 KonfirmasiPembayaranFragment konfirmasiPembayaranFragment = new KonfirmasiPembayaranFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("id",""+dataSnapshot.getChildrenCount());
-                konfirmasiPembayaranFragment.setArguments(bundle);
+                konfirmasiPembayaranFragment.setArguments(bundle); //ini untuk mengoper variabel ke halaman berikutnya
                 setFragment(konfirmasiPembayaranFragment);
             }
 
@@ -159,12 +165,14 @@ public class VerifikasiPembayaranFragment extends Fragment {
 
     }
 
+    //ini fungsi untuk ke halaman berikutnya
     private void setFragment(Fragment fragment) // fungsi buat pindah - pindah fragment
     {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
             fm.popBackStack();
         }
+        //dilakukan perulangan dan pop fragment agar fragment tidak tumpang tindih
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         HomeFragment homeFragment = new HomeFragment();
         fragmentTransaction.replace(R.id.frameFragment,homeFragment).addToBackStack(null);
@@ -172,6 +180,7 @@ public class VerifikasiPembayaranFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    //alert ketika tombol verify ditekan, akan menampilkan pesan dialog.
     public void alertVerify(){ // fungsi untuk membuat alert dialog ketika ingin logout
         AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(getActivity());
 
@@ -200,6 +209,7 @@ public class VerifikasiPembayaranFragment extends Fragment {
 
     }
 
+    //fungsi untuk menginisiasi status bar yang ada di paling atas
     private void setStatusBar(){ // fungsi buat ubah warna status bar
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getActivity().getWindow().clearFlags(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);

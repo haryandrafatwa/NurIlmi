@@ -47,6 +47,7 @@ public class KonfirmasiBerhasilFragment extends Fragment {
         initialize();
     }
 
+    //ini adlaah fungsi inisiasi untuk semua objek yang ada pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);

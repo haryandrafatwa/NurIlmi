@@ -38,6 +38,7 @@ public class MetodePembayaranFragment extends Fragment {
         initialize();
     }
 
+    //fungsi inisiasi semua objek pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -57,6 +58,7 @@ public class MetodePembayaranFragment extends Fragment {
 
         final Bundle bundle = getArguments();
 
+        //Melakukan selection terhadap metode pembayaran, dan mengirimkan variabel ke fragment selanjutnya
         mandiri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

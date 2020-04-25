@@ -133,16 +133,18 @@ public class UploadFragment extends Fragment {
         });
     }
 
+    //ini fungsi untuk mengupload foto hasil transaksi ke firebase storage dan juga firebase database
     private void uploadImage(){
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle("Uploading...");
         progressDialog.show();
-        progressDialog.setCancelable(false);
+        progressDialog.setCancelable(false); //menggunakan progress dialog agar pada saat proses pengiriman foto ke firebase storage dapat terlihat prosesnya
         imageRefs.child("buktiTransaksi.png").putFile(filePath)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressDialog.dismiss();
+                        //ini proses mengambil link download pada foto yang berada di firebase storage, dan menaruh link tersebut ke dalam firebase database, agar lebih mudah ketika diakses oleh sistem
                         imageRefs.child("buktiTransaksi.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
@@ -180,6 +182,7 @@ public class UploadFragment extends Fragment {
                 });
     }
 
+    //ini adalah fungsi yang akan menampilkan pilihan apakah foto yang akan diupload berasal dari galeri atau dari camera langsung
     private void initializeDialogTakeImage(){
         final Dialog dialog1 = new Dialog(getActivity(),R.style.CustomAlertDialog);
         dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -209,6 +212,7 @@ public class UploadFragment extends Fragment {
         dialog1.show();
     }
 
+    //ini adalah fungsi untuk mengecek apakah device sudah memberikan perizinan menggunakan camera untuk aplikasi ini atau tidak, jika sudah, secara otomatis akan memindahkan halaman menjadi halaman camera
     private void dispatchTakePictureIntent() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
@@ -224,6 +228,7 @@ public class UploadFragment extends Fragment {
 
     }
 
+    //ini adalah fungsi ketika foto yang berasal dari galeri atau camera sudah terpilih, dan akan ditampilkan hasilnya ke image view yang ada pada halaman ini
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -253,6 +258,7 @@ public class UploadFragment extends Fragment {
         }
     }
 
+    //ini fungsi untuk mengubah file path abstract menjadi absolute file path
     public File getPhotoFileUri(String fileName) {
         File mediaStorageDir = new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES), APP_TAG);
 
@@ -265,6 +271,7 @@ public class UploadFragment extends Fragment {
         return file;
     }
 
+    //ini adalah fungsi ketika memilih foto dari galeri, dan akan menampilkan foto2 yang ada pada galeri
     private void choosePhotoFromGallery() {
         Intent intent = new Intent();
         intent.setType("image/*");

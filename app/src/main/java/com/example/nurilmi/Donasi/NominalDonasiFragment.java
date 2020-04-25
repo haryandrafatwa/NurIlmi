@@ -50,6 +50,7 @@ public class NominalDonasiFragment extends Fragment {
         initialize();
     }
 
+    //fungsi inisiasi semua objek pada halaman ini
     private void initialize() {
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -60,6 +61,7 @@ public class NominalDonasiFragment extends Fragment {
         button = getActivity().findViewById(R.id.btn_submit_pembayaran);
         ib_back = getActivity().findViewById(R.id.ib_back);
 
+        //ini untuk ketika tombol back di tekan, maka ke halaman sebelumnya
         ib_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +70,7 @@ public class NominalDonasiFragment extends Fragment {
         });
 
 
+        //Melakukan selection terhadap metode pembayaran, untuk menginisiasi gambar serta deskripsi bank
         final Bundle bundle = getArguments();
         String metode = bundle.getString("metodePembayaran");
         if (metode.equals("Mandiri")) {
@@ -130,6 +133,8 @@ public class NominalDonasiFragment extends Fragment {
                 if (TextUtils.isEmpty(editText.getText().toString())) {
                     Toast.makeText(getActivity(), "Silahkan isi nominal uang terlebih dahulu", Toast.LENGTH_SHORT).show();
                 } else {
+
+                    //proses konvert kedalam bentuk rupiah format
                     Locale local = new Locale("id", "id");
                     String replace = String.format("[Rp\\s]", NumberFormat.getCurrencyInstance().getCurrency().getSymbol(local));
                     String clean = editText.getText().toString().replaceAll(replace, "");

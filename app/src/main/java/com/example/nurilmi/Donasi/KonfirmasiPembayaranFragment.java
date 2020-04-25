@@ -56,6 +56,7 @@ public class KonfirmasiPembayaranFragment extends Fragment {
         initialize();
     }
 
+    //ini adlaah fungsi inisiasi untuk semua objek yang ada pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -133,6 +134,7 @@ public class KonfirmasiPembayaranFragment extends Fragment {
         });
     }
 
+    //ini adalah fungsi ketika ingin berpindah ke fragment selanjutnya tanpa adanya kondisi terentu
     private void setFragmentClear(Fragment fragment) // fungsi buat pindah - pindah fragment
     {
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -146,6 +148,7 @@ public class KonfirmasiPembayaranFragment extends Fragment {
         getActivity().getWindow().setStatusBarColor(getActivity().getResources().getColor(R.color.colorPrimary));
     }
 
+    //fungsi untuk mengubah menjadi rupiah format
     public String convertNominal(String s) {
         Locale local = new Locale("id", "id");
         String replaceable = String.format("[Rp,.\\s]", NumberFormat.getCurrencyInstance().getCurrency().getSymbol(local));
